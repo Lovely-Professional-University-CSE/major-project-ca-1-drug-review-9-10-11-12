@@ -106,5 +106,57 @@ In [ ]:
 1.df.head()
 
 
+In [ ]:
+
+1.import nltk
+2.from nltk.corpus import stopwords
+3.from nltk.stem.snowball import SnowballStemmer
+4.from nltk import word_tokenize
+5.from nltk.corpus import stopwords 
+
+In [ ]:
+
+
+1.def prepro(df):
+2.tokens=word_tokenize(df)
+3.stemmer=SnowballStemmer('english',ignore_stopwords=True)
+4.stemmed=[stemmer.stem(word) for word in tokens]
+5.words=[word for word in stemmed if word.isalpha()]
+6.stop_words=set(stopwords.words('english'))
+7.st=[w for w in words if not w in stop_words]
+8.return st
+
+
+
+
+In [ ]:
+
+
+1
+df['review']=df.apply(lambda row:prepro(row['review']),axis=1)
+
+
+
+
+In [ ]:
+
+
+
+
+1
+X=df.drop('Sentiment',axis=1)
+2
+y=df['Sentiment']
+3
+X.shape
+4
+y.shape
+
+
+
+
+
+
+
 
 
