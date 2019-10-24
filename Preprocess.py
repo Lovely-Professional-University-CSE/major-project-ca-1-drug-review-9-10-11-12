@@ -36,6 +36,13 @@ df['review'][10]
 
 # In[7]:
 
+def sentiment(df):
+  df.loc[df.rating<4,'Sentiment']="Negative"
+  df.loc[(df.rating>=4) & (df.rating<7) ,'Sentiment']="Neutral"
+  df.loc[(df.rating>=7),'Sentiment']="Positive"
+  return df
+
+df['review']=sentiment(df)
 
 df=df.drop(['UniqueId','drugName','condition','date','usefulCount'],axis=1)
 df2=df2.drop(['UniqueId','drugName','condition','date','usefulCount'],axis=1)
