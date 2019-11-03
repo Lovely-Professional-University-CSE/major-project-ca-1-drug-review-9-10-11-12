@@ -40,6 +40,11 @@ df['review']=sentiment(df)
 X=df.drop('Sentiment',axis=1)
 y=df['Sentiment']
 
+plt.hist(df['rating'])
+plt.xlabel("Ratings")
+plt.ylabel("No.of reviews")
+plt.title("Ratings vs No.of reviews")
+
 from sklearn.model_selection import train_test_split
 X_train,X_test,y_train,y_test=train_test_split(X,y,test_size=0.33,random_state=42,stratify=y)
 
