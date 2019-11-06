@@ -6,6 +6,8 @@ from nltk.corpus import stopwords
 from nltk.stem.snowball import SnowballStemmer,PorterStemmer
 from nltk import word_tokenize
 from nltk.corpus import stopwords 
+from sklearn.neural_network import MLPClassifier
+from sklearn.model_selection import RandomizedSearchCV
 
 df=pd.read_csv("drugsComTrain_raw.tsv",delimiter='\t')
 df2=pd.read_csv("drugsComTest_raw.tsv",delimiter='\t')
@@ -53,7 +55,11 @@ vectorizer=TfidfVectorizer()
 train_Xv=vectorizer.fit_transform(X_train['review'].astype(str))
 test_Xv=vectorizer.transform(X_test['review'].astype(str))
 
-from sklearn.neural_network import MLPClassifier
+
+#params={'solver':['adam','sgd'],'activation':['relu','logistic','tanh'],'hidden_layer_sizes':[(100),(150,75),(150,200)],'learning_rate_init':[0.001,0.01,1,0.1]}
+#rs=RandomizedSearchCV(clf,params,random_state=1, cv=5, verbose=0,n_jobs=-1)
+#rs.fit(train_Xv,y_train)
+#rs.best_params_
 
 clf = MLPClassifier(solver='adam', alpha=0.01,activation='relu',hidden_layer_sizes=(150, 75),max_iter=1000,random_state=1,batch_size=27017,learning_rate_init=0.001)
 
