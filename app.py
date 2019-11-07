@@ -33,13 +33,18 @@ def vector(x):
 
 
 def sentiment():
+    global t1,root
+    print(t1)
     mtext=t1.get()
     x=prepro(mtext)
     vect=vector(x)
     pred=loaded_clf.predict(vect)
     entry2=Label(top,text=pred).grid(row=2,column=1)
+    
 def open_window():
-    root = Toplevel()
+    global t1,root
+    top.destroy()
+    root = Tk()
     root.geometry("600x300+120+120")
     root.title("Predict the Sentiment")
     root.config(bg="cyan")
