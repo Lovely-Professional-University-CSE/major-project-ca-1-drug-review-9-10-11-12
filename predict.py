@@ -1,7 +1,9 @@
 from tkinter import *
 from preprocess import *
 import os
-
+def back():
+    root.destroy()
+    os.system('GUI.py')
 def sentiment():
     mtext=t1.get()
     x=prepro(mtext)
@@ -27,9 +29,11 @@ label2 =Label(root, text='Type Your Review:')
 label2.config(font=('helvetica', 10))
 canvas1.create_window(200, 100, window=label2)
  
-entry1 =Entry (root) 
+entry1 =Entry(root,textvariable=t1) 
 canvas1.create_window(200, 140, window=entry1)
     
 B2 = Button(root,text='Get the Sentiment',bg='brown', fg='white', font=('helvetica', 9, 'bold'),command=sentiment)
 canvas1.create_window(200, 180, window=B2)
+B3 = Button(root,text='Back',bg='brown', fg='white', font=('helvetica', 9, 'bold'),command=back)
+canvas1.create_window(200, 250, window=B3)
 root.mainloop()

@@ -12,6 +12,8 @@ with open('classifier.pkl','rb') as f:
     loaded_clf=pickle.load(f)
 with open('vectorizer.pkl','rb') as g:
     loaded_vect=pickle.load(g)
+with open('AccuracyPercentage','rb') as h:
+    loaded_acc=pickle.load(h)
 
 
 def prepro(df):
