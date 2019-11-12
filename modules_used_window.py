@@ -3,7 +3,7 @@ from tkinter import *
 import sys
 import os
 
-about_us = Toplevel()
+about_us = Tk()
 about_us.title("About Us")
 about_us.wm_attributes("-fullscreen", "true")
 about_us.config(bg="cyan")
@@ -32,11 +32,5 @@ def home_page():
     os.system("home_page.py")
 home_button = PhotoImage(file="home.png")
 Button(about_us_Frame, image=home_button, cursor="hand2", command=home_page).grid(row = 2, column = 0, columnspan = 1, pady=10)
-
-def exit_window():
-  about_us.destroy()
-  print("do nothing")
-exit_image = PhotoImage(file = 'icon_accuracy.png')
-Button(about_us_Frame, image=exit_image,text= 'Check Accuracy',compound=LEFT,font=('helv36', 20, 'bold'),cursor="hand2", command = exit_window).grid(row = 2, column = 2,columnspan=2, pady=10)
 
 about_us.mainloop()
