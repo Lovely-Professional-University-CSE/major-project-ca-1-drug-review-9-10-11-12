@@ -4,9 +4,9 @@ from preprocess import *
 import os
 def back():
     accuracy_window.destroy()
-    os.system('gui.py')
+    os.system('GUI.py')
 accuracy_window=Tk()
-box=PhotoImage(file='images\\confusion.png')
+box=PhotoImage(file='confusion.png')
 l1=Label(accuracy_window,image=box)
 l1.grid(row=1,column=1)
 l2=Label(accuracy_window,text=loaded_acc,font=('helv36', 30, 'bold'))
